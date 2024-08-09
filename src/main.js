@@ -10,9 +10,11 @@ mainForm.addEventListener("submit", (event) => {
     const searchQuery = mainForm.elements['search-query'].value;
     loader.style.display = "block";
     const oldElements = document.querySelectorAll("li.result-item");
+    
     if (oldElements && oldElements.length > 0) {
         oldElements.forEach(element => element.remove());
     }
+
     loadData(searchQuery,
         response => render(response.hits),
         error => console.error(error),
