@@ -20,9 +20,10 @@ let raiseEmptyResponse = () => {
     });
 }
 
-export function loadData(searchText, callbackOnSuccess, callbackOnError) {
+export function loadData(searchText, callbackOnSuccess, callbackOnError, callOnFinally) {
     if (searchText === null || searchText === "") {
         raiseEmptySearchCriteria();
+        callOnFinally();
         return;
     }
 
@@ -53,5 +54,6 @@ export function loadData(searchText, callbackOnSuccess, callbackOnError) {
                 raiseEmptyResponse();
             }
         })
-        .catch(error => callbackOnError(error));
+        .catch(error => callbackOnError(error))
+        .finally(() => callOnFinally());
 }

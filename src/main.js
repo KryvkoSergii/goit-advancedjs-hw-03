@@ -14,12 +14,7 @@ mainForm.addEventListener("submit", (event) => {
         oldElements.forEach(element => element.remove());
     }
     loadData(searchQuery,
-        response => {
-            render(response.hits);
-            loader.style.display = "none";
-        },
-        error => {
-            console.error(error);
-            loader.style.display = "none";
-        });
+        response => render(response.hits),
+        error => console.error(error),
+        () => loader.style.display = "none");
 });

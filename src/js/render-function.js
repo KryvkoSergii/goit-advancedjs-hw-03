@@ -33,11 +33,7 @@ function getElement(element) {
 }
 
 export function render(arrayOfElements) {
-  
-
   const update = arrayOfElements.map(el => getElement(el)).join("");
-  
-  
   
   const gallery = document.querySelector("ul.results");
   gallery.insertAdjacentHTML("afterbegin", update);
